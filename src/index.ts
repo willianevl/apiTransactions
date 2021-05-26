@@ -15,6 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
+app.listen(3000);
+
+
 app.post("/users", validarNome, validarAge, validarCPF, validarEmail, (req: Request, res: Response) => {
     const { name, cpf, email, age }: IUser = req.body;
 
@@ -259,11 +262,6 @@ app.delete("/users/:userId/transactions/:id", (req: Request, res: Response) => {
     return res.status(200).json({
         usuario: transactionRemovida
     });
-});
-
-
-app.listen(3000, () => {
-    console.log('API is running');
 });
 
 
