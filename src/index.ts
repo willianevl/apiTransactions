@@ -17,6 +17,15 @@ app.use(cors());
 
 app.listen(process.env.PORT || 3000);
 
+app.get("/", (req: express.Request, res: express.Response) => {
+    res.send(`
+    <body style='margin:0;padding:0'>
+        <div style='display: flex;justify-content: center;align-items: center; align-content: center;width:99vw;height:99vh'>
+          <h1 style='font-size:60px;font-weigth:600'>🚀 API - Transações</h1>
+        </div>
+    </body>
+    `);
+  });
 
 app.post("/users", validarNome, validarAge, validarCPF, validarEmail, (req: Request, res: Response) => {
     const { name, cpf, email, age }: IUser = req.body;
