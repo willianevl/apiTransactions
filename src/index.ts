@@ -208,6 +208,7 @@ app.get("/users/:userId/transactions", (req: Request, res: Response) => {
       });
 
     return res.status(200).json({
+        transaction: usuario.transactions,
         totalIncome: totalIncome,
         totalOutcome: totalOutcome,
         total: total
