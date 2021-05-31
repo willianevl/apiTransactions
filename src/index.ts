@@ -140,13 +140,13 @@ app.post("/user/:userId/transactions", (req: Request, res: Response) => {
         return res.status(404).json({msg: 'Usuário não existe'})
     }
 
-    let initialValue = 0;
+    let initialValue: number = 0;
 
     if ( type === 'income' ){
         initialValue += value;
     }
     if ( type === 'outcome' ){
-        initialValue -= value;
+        initialValue += value;
     }
 
 
@@ -192,7 +192,7 @@ app.get("/users/:userId/transactions", (req: Request, res: Response) => {
         return res.status(404).json({msg: 'Usuário não existe'})
     }
 
-    let total: number = 0;
+      let total: number = 0;
       let totalIncome: number = 0;
       let totalOutcome: number = 0;
       usuario.transactions.forEach(({value, type}: {value: number, type: string}) => {
@@ -208,7 +208,7 @@ app.get("/users/:userId/transactions", (req: Request, res: Response) => {
       });
 
     return res.status(200).json({
-        transaction: usuario.transactions,
+        transactions: usuario.transactions,
         totalIncome: totalIncome,
         totalOutcome: totalOutcome,
         total: total
